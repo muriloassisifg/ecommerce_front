@@ -1,11 +1,11 @@
 import 'subcategory.dart'; // Importa o modelo de SubCategory
 
 class Product {
-  final int id;
-  final String name;
-  final double price;
-  final int subCategoryId; // ID da subcategoria associada
-  final SubCategory
+  int id;
+  String name;
+  double price;
+  int subCategoryId; // ID da subcategoria associada
+  SubCategory
       subCategory; // Objeto SubCategory para acessar detalhes da subcategoria
 
   // Construtor da classe Product

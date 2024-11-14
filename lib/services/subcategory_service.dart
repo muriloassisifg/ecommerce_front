@@ -1,5 +1,6 @@
 import '../models/subcategory.dart'; // Importa o modelo de subcategoria
-import '../repositories/subcategory_repository.dart'; // Importa o repositório de subcategorias
+// import '../repositories/subcategory_repository.dart'; // Importa o repositório de subcategorias
+import '../repositories/subcategory_repository_ppw3.dart'; // Importa o repositório de subcategorias
 
 class SubCategoryService {
   final SubCategoryRepository _repository =

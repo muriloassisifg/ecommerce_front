@@ -1,6 +1,6 @@
 class Category {
-  final int id;
-  final String name;
+  int id;
+  String name;
 
   // Construtor da classe Category
   Category({required this.id, required this.name});

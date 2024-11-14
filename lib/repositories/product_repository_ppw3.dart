@@ -1,45 +1,39 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import '../models/product.dart';
+import 'package:ecommerce_front/models/product.dart';
 
 class ProductRepository {
-  final String baseUrl =
-      "http://localhost:8000"; // Troque pela URL do seu backend
+  final List<Product> _products = [];
+  int _nextId = 1; // Variável para acompanhar o próximo ID disponível
 
+  // Simula a latência de uma chamada a um backend
+  Future<void> _simulateNetworkDelay() async {
+    await Future.delayed(
+        Duration(milliseconds: 10)); // Simula um atraso de 10 milisegundos
+  }
+
+  // Busca todos os produtos
   Future<List<Product>> fetchProducts() async {
-    final response = await http.get(Uri.parse('$baseUrl/products'));
-
-    if (response.statusCode == 200) {
-      List<dynamic> body = jsonDecode(response.body);
-      List<Product> products =
-          body.map((item) => Product.fromJson(item)).toList();
-      return products;
-    } else {
-      throw Exception('Failed to load products');
-    }
+    return List.from(_products); // Retorna uma cópia da lista de produtos
   }
 
+  // Função para criar um novo produto
   Future<Product> createProduct(Product product) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl/product/save'),
-      headers: {"Content-Type": "application/json"},
-      body: jsonEncode(product.toJson()),
-    );
+    await _simulateNetworkDelay(); // Aguarda o atraso simulado
+    product.id = _nextId++; // Atribui o próximo ID e incrementa a variável
+    _products.add(product);
 
-    if (response.statusCode == 200) {
-      return Product.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to create product');
-    }
+    // Retorna o produto com a subcategoria associada
+    return Product(
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      subCategoryId: product.subCategoryId,
+      subCategory: product.subCategory,
+    );
   }
 
+  // Remove um produto da lista pelo ID
   Future<void> deleteProduct(int id) async {
-    final response = await http.delete(Uri.parse('$baseUrl/product/$id'));
-
-    /// Throws an [Exception] if the request was not successful.
-
-    if (response.statusCode != 200) {
-      throw Exception('Failed to delete product');
-    }
+    await _simulateNetworkDelay(); // Aguarda o atraso simulado
+    _products.removeWhere((product) => product.id == id);
   }
 }

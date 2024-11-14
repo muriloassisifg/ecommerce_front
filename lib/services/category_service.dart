@@ -1,5 +1,10 @@
 import '../models/category.dart'; // Importa o modelo de categoria
-import '../repositories/category_repository.dart'; // Importa o repositório de categorias
+
+// import '../repositories/category_repository.dart'; // Importa o repositório de categorias
+import 'package:ecommerce_front/repositories/category_repository_ppw3.dart';
+
+// Importa os arquivos com base na condição
+// Define uma variável para armazenar o repositório
 
 class CategoryService {
   final CategoryRepository _repository =
