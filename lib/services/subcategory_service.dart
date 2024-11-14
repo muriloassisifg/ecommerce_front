@@ -6,7 +6,7 @@ class SubCategoryService {
       SubCategoryRepository(); // Instância do repositório de subcategorias
 
   // Função para obter todas as subcategorias de uma categoria específica
-  Future<List<SubCategory>> getSubCategories(int categoryId) {
+  Future<List<SubCategory>> getSubCategories() {
     return _repository.fetchSubCategories();
   }
 

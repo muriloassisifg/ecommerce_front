@@ -23,8 +23,8 @@ class Product {
       id: json['id'],
       name: json['name'],
       price: json['price'],
-      subCategoryId: json['subCategoryId'],
-      subCategory: SubCategory.fromJson(json['subCategory']),
+      subCategoryId: json['sub_category_id'],
+      subCategory: SubCategory.fromJson(json['sub_category']),
     );
   }
 
@@ -34,8 +34,8 @@ class Product {
       'id': id,
       'name': name,
       'price': price,
-      'subCategoryId': subCategoryId,
-      'subCategory': subCategory.toJson(),
+      'sub_category_id': subCategoryId,
+      'sub_category': subCategory.toJson(),
     };
   }
 }

@@ -5,10 +5,14 @@ import '../widgets/subcategory_card.dart'; // Importa o widget SubCategoryCard
 import 'add_subcategory_popup.dart'; // Importa a tela de pop-up para adicionar novas subcategorias
 
 class SubCategoryListScreen extends StatelessWidget {
-  // final int categoryId; // ID da categoria para carregar as subcategorias
-
   @override
   Widget build(BuildContext context) {
+    // Obtém o controlador de subcategorias usando o Provider
+    final controller =
+        Provider.of<SubCategoryController>(context, listen: false);
+    // Carrega a lista de categorias ao construir a tela
+    controller.loadSubCategories();
+
     return Stack(
       children: [
         Consumer<SubCategoryController>(

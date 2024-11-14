@@ -7,9 +7,9 @@ class SubCategoryRepository {
       "http://localhost:8000"; // Troque pela URL do seu backend
 
   // Função para buscar todas as subcategorias de uma categoria específica
-  Future<List<SubCategory>> fetchSubCategories(int categoryId) async {
-    final response = await http
-        .get(Uri.parse('$baseUrl/categories/$categoryId/subcategories'));
+
+  Future<List<SubCategory>> fetchSubCategories() async {
+    final response = await http.get(Uri.parse('$baseUrl/subcategories'));
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);

@@ -11,15 +11,15 @@ class SubCategoryController extends ChangeNotifier {
       _subcategories; // Getter para a lista de subcategorias
 
   // Função para carregar subcategorias de uma categoria específica
-  // Future<void> loadSubCategories(int categoryId) async {
-  //   try {
-  //     _subcategories = await _service
-  //         .getSubCategories(categoryId); // Obtém as subcategorias do serviço
-  //     notifyListeners(); // Notifica os ouvintes sobre a mudança no estado
-  //   } catch (e) {
-  //     print('Error loading subcategories: $e'); // Imprime o erro no console
-  //   }
-  // }
+  Future<void> loadSubCategories() async {
+    try {
+      _subcategories = await _service
+          .getSubCategories(); // Obtém as subcategorias do serviço
+      notifyListeners(); // Notifica os ouvintes sobre a mudança no estado
+    } catch (e) {
+      print('Error loading subcategories: $e'); // Imprime o erro no console
+    }
+  }
 
   // Função para adicionar uma nova subcategoria
   Future<void> addSubCategory(SubCategory subCategory) async {
