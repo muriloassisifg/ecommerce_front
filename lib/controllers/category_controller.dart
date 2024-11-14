@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/category.dart';
-import '../services/role1_service.dart'; // Importa o serviço de categorias
+import '../services/category_service.dart'; // Importa o serviço de categorias
 
 class CategoryController extends ChangeNotifier {
   final CategoryService _service =

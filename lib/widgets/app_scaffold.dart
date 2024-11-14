@@ -1,7 +1,9 @@
 // Importa as telas necessárias para navegação no aplicativo
 import 'package:ecommerce_front/screens/category_list_screen.dart';
 import 'package:ecommerce_front/screens/product_list_screen.dart';
+import 'package:ecommerce_front/screens/role_list_screen.dart';
 import 'package:ecommerce_front/screens/subcategory_list_screen.dart';
+import 'package:ecommerce_front/screens/user_list_screen.dart';
 import 'package:flutter/material.dart';
 
 // Classe AppScaffold, que define a estrutura básica do aplicativo
@@ -107,6 +109,32 @@ class AppScaffold extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) =>
                         AppScaffold(bodyContent: SubCategoryListScreen()),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Perfil'), // Título do item "Categorias"
+              onTap: () {
+                // Navega para a tela de lista de categorias ao selecionar o item
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        AppScaffold(bodyContent: RoleListScreen()),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Usuário'), // Título do item "Categorias"
+              onTap: () {
+                // Navega para a tela de lista de categorias ao selecionar o item
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        AppScaffold(bodyContent: UserListScreen()),
                   ),
                 );
               },

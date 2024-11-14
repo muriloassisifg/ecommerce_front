@@ -1,6 +1,8 @@
 // main.dart
 import 'package:ecommerce_front/controllers/category_controller.dart';
+import 'package:ecommerce_front/controllers/role_controller.dart';
 import 'package:ecommerce_front/controllers/subcategory_controller.dart';
+import 'package:ecommerce_front/controllers/user_controller.dart';
 import 'package:ecommerce_front/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,9 @@ void main() {
                 ProductController()), // Inicia o ProductController como provedor de estado
         ChangeNotifierProvider(create: (_) => CategoryController()),
         ChangeNotifierProvider(create: (_) => SubCategoryController()),
+        ChangeNotifierProvider(create: (_) => ProductController()),
+        ChangeNotifierProvider(create: (_) => RoleController()),
+        ChangeNotifierProvider(create: (_) => UserController()),
       ],
       child: MyApp(),
     ),
