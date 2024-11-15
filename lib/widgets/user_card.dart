@@ -15,7 +15,7 @@ class UserCard extends StatelessWidget {
     return Card(
       // Card que envolve o ListTile, criando um visual com bordas elevadas
       child: ListTile(
-        title: Text(user.name), // Título exibindo o nome da subcategoria
+        title: Text(user.userName), // Título exibindo o nome da subcategoria
         subtitle: Text(
           'Perfil: ${user.role.name}', // Nome da categoria associada
           style: TextStyle(color: Colors.grey[600]), // Cor cinza para o texto

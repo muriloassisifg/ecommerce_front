@@ -16,23 +16,24 @@ class UserRepository {
   }
 
   // Função para criar uma nova subcategoria
-  Future<User> createUser(User subCategory) async {
+  Future<User> createUser(User user) async {
     await _simulateNetworkDelay(); // Aguarda o atraso simulado
-    subCategory.id = _nextId++; // Atribui o próximo ID e incrementa a variável
-    _users.add(subCategory);
+    user.id = _nextId++; // Atribui o próximo ID e incrementa a variável
+    _users.add(user);
 
     // Retorna a subcategoria com a categoria associada
     return User(
-      id: subCategory.id,
-      name: subCategory.name,
-      roleId: subCategory.roleId,
-      role: subCategory.role,
+      id: user.id,
+      userName: user.userName,
+      password: user.password,
+      roleId: user.roleId,
+      role: user.role,
     );
   }
 
   // Remove uma subcategoria da lista pelo ID
   Future<void> deleteUser(int id) async {
     await _simulateNetworkDelay(); // Aguarda o atraso simulado
-    _users.removeWhere((subCategory) => subCategory.id == id);
+    _users.removeWhere((user) => user.id == id);
   }
 }

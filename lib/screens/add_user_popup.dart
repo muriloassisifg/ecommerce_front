@@ -12,7 +12,8 @@ class AddUserPopup extends StatefulWidget {
 
 class _AddUserPopupState extends State<AddUserPopup> {
   final _formKey = GlobalKey<FormState>();
-  String _name = '';
+  String _user_name = '';
+  String _password = '';
   Role? _selectedRole;
 
   @override
@@ -35,7 +36,19 @@ class _AddUserPopupState extends State<AddUserPopup> {
                 return null;
               },
               onSaved: (value) {
-                _name = value!;
+                _user_name = value!;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Senha'),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Informe a senha usuário';
+                }
+                return null;
+              },
+              onSaved: (value) {
+                _password = value!;
               },
             ),
             DropdownButtonFormField<Role>(
@@ -75,7 +88,8 @@ class _AddUserPopupState extends State<AddUserPopup> {
               _formKey.currentState!.save();
               final newUser = User(
                 id: 0,
-                name: _name,
+                userName: _user_name,
+                password: _password,
                 roleId: _selectedRole!.id,
                 role: _selectedRole!,
               );

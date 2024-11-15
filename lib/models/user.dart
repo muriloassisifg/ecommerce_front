@@ -2,14 +2,16 @@ import 'package:ecommerce_front/models/role.dart';
 
 class User {
   int id;
-  String name;
+  String userName;
+  String password;
   int roleId; // ID da categoria à qual a subcategoria pertence
   Role role; // Objeto Role para acessar informações da categoria
 
   // Construtor da classe User
   User({
     required this.id,
-    required this.name,
+    required this.userName,
+    required this.password,
     required this.roleId,
     required this.role,
   });
@@ -18,7 +20,8 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
-      name: json['name'],
+      userName: json['user_name'],
+      password: json['password'],
       roleId: json['role_id'],
       role: Role.fromJson(json['role']),
     );
@@ -28,7 +31,8 @@ class User {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'name': name,
+      'user_name': userName,
+      'password': password,
       'role_id': roleId,
     };
   }
