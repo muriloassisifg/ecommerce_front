@@ -29,7 +29,7 @@ class AppScaffold extends StatelessWidget {
               // CircleAvatar para mostrar a imagem do usuário
               CircleAvatar(
                 backgroundImage: AssetImage(
-                    "assets/user_avatar.webp"), // Imagem do usuário no avatar
+                    "assets/images/user_avatar.webp"), // Imagem do usuário no avatar
               ),
               SizedBox(width: 8), // Espaçamento entre o avatar e o menu
               // PopupMenuButton que exibe um menu ao clicar
