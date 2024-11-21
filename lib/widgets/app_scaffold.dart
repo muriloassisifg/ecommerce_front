@@ -1,5 +1,6 @@
 // Importa as telas necessárias para navegação no aplicativo
 import 'package:ecommerce_front/screens/category_list_screen.dart';
+import 'package:ecommerce_front/screens/login_screen.dart';
 import 'package:ecommerce_front/screens/product_list_screen.dart';
 import 'package:ecommerce_front/screens/role_list_screen.dart';
 import 'package:ecommerce_front/screens/subcategory_list_screen.dart';
@@ -28,7 +29,7 @@ class AppScaffold extends StatelessWidget {
               // CircleAvatar para mostrar a imagem do usuário
               CircleAvatar(
                 backgroundImage: AssetImage(
-                    "assets/user_avatar.png"), // Imagem do usuário no avatar
+                    "assets/user_avatar.webp"), // Imagem do usuário no avatar
               ),
               SizedBox(width: 8), // Espaçamento entre o avatar e o menu
               // PopupMenuButton que exibe um menu ao clicar
@@ -36,7 +37,12 @@ class AppScaffold extends StatelessWidget {
                 // Função chamada quando uma opção é selecionada
                 onSelected: (value) {
                   if (value == 'logout') {
-                    // Implementação do logout (a ser definida)
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                    );
                   }
                 },
                 // Define os itens do menu suspenso
