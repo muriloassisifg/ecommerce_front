@@ -5,11 +5,9 @@ import 'package:ecommerce_front/controllers/role_controller.dart';
 import 'package:ecommerce_front/controllers/subcategory_controller.dart';
 import 'package:ecommerce_front/controllers/user_controller.dart';
 import 'package:ecommerce_front/screens/login_screen.dart';
-import 'package:ecommerce_front/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'controllers/product_controller.dart'; // Importa o ProductController para gerenciar o estado dos produtos
-import 'screens/product_list_screen.dart'; // Define a ProductListScreen como tela inicial
+import 'controllers/product_controller.dart';
 
 void main() {
   // Inicia o app com MultiProvider para gerenciar múltiplos controladores de estado
@@ -32,9 +30,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'Product App',
       theme: ThemeData(
         primarySwatch: Colors.blue, // Define a cor padrão do tema

@@ -1,4 +1,4 @@
-import 'package:ecommerce_front/repositories/login_repository_ppw3.dart';
+import 'package:ecommerce_front/repositories/login_repository.dart';
 
 class LoginService {
   final LoginRepository _repository = LoginRepository();
