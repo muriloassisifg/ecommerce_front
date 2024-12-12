@@ -1,3 +1,4 @@
+import 'package:ecommerce_front/utils/app_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/order_controller.dart';
@@ -12,8 +13,8 @@ class OrderListScreen extends StatelessWidget {
         title: Text("Meus Pedidos"),
       ),
       body: FutureBuilder(
-        future: controller
-            .loadOrders(2), // Certifique-se de passar o userId correto
+        future: controller.loadOrders(AppStorage()
+            .getUserId()), // Certifique-se de passar o userId correto
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
