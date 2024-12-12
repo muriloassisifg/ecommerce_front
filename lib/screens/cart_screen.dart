@@ -1,5 +1,6 @@
 import 'package:ecommerce_front/controllers/order_controller.dart';
 import 'package:ecommerce_front/screens/orders_screen.dart';
+import 'package:ecommerce_front/utils/app_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/cart_controller.dart';
@@ -68,7 +69,8 @@ class CartScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Provider.of<OrderController>(context, listen: false).createOrder(2);
+          Provider.of<OrderController>(context, listen: false)
+              .createOrder(AppStorage().getUserId());
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Compra finalizda!")),
           );
