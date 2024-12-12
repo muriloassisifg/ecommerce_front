@@ -1,19 +1,20 @@
 // Importa as telas necessárias para navegação no aplicativo
 import 'package:ecommerce_front/screens/category_list_screen.dart';
 import 'package:ecommerce_front/screens/login_screen.dart';
-import 'package:ecommerce_front/screens/product_list_screen.dart';
+import 'package:ecommerce_front/screens/product_list_screen_adm.dart';
+import 'package:ecommerce_front/screens/product_list_screen_client.dart';
 import 'package:ecommerce_front/screens/role_list_screen.dart';
 import 'package:ecommerce_front/screens/subcategory_list_screen.dart';
 import 'package:ecommerce_front/screens/user_list_screen.dart';
 import 'package:flutter/material.dart';
 
 // Classe AppScaffold, que define a estrutura básica do aplicativo
-class AppScaffold extends StatelessWidget {
+class AppScaffoldAdm extends StatelessWidget {
   // Define o conteúdo principal da tela que será exibido no corpo
   final Widget bodyContent;
 
   // Construtor da classe AppScaffold que recebe o conteúdo principal como parâmetro
-  AppScaffold({required this.bodyContent});
+  AppScaffoldAdm({required this.bodyContent});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,7 @@ class AppScaffold extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        AppScaffold(bodyContent: ProductListScreen()),
+                        AppScaffoldAdm(bodyContent: ProductListScreenAdm()),
                   ),
                 );
               },
@@ -101,7 +102,7 @@ class AppScaffold extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        AppScaffold(bodyContent: CategoryListScreen()),
+                        AppScaffoldAdm(bodyContent: CategoryListScreen()),
                   ),
                 );
               },
@@ -114,7 +115,7 @@ class AppScaffold extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        AppScaffold(bodyContent: SubCategoryListScreen()),
+                        AppScaffoldAdm(bodyContent: SubCategoryListScreen()),
                   ),
                 );
               },
@@ -127,7 +128,7 @@ class AppScaffold extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        AppScaffold(bodyContent: RoleListScreen()),
+                        AppScaffoldAdm(bodyContent: RoleListScreen()),
                   ),
                 );
               },
@@ -140,7 +141,7 @@ class AppScaffold extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        AppScaffold(bodyContent: UserListScreen()),
+                        AppScaffoldAdm(bodyContent: UserListScreen()),
                   ),
                 );
               },

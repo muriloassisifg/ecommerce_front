@@ -1,3 +1,4 @@
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:get_storage/get_storage.dart';
 
 // Classe responsável por gerenciar o armazenamento local de dados no aplicativo
@@ -20,6 +21,16 @@ class AppStorage {
 
   // Getter para recuperar o token armazenado localmente
   String? get token => storage.read('token');
+
+  int getUserId() {
+    JWT jwtDecode = JWT.decode(AppStorage().token!);
+    return jwtDecode.payload["user_id"];
+  }
+
+  int getRoleId() {
+    JWT jwtDecode = JWT.decode(AppStorage().token!);
+    return jwtDecode.payload["role_id"];
+  }
 
   // Setter para armazenar ou remover o token
   // Se o token for nulo, remove a chave 'token' do armazenamento

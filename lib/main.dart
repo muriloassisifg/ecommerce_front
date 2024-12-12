@@ -1,6 +1,8 @@
 // main.dart
+import 'package:ecommerce_front/controllers/cart_controller.dart';
 import 'package:ecommerce_front/controllers/category_controller.dart';
 import 'package:ecommerce_front/controllers/login_controller.dart';
+import 'package:ecommerce_front/controllers/order_controller.dart';
 import 'package:ecommerce_front/controllers/role_controller.dart';
 import 'package:ecommerce_front/controllers/subcategory_controller.dart';
 import 'package:ecommerce_front/controllers/user_controller.dart';
@@ -23,6 +25,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => RoleController()),
         ChangeNotifierProvider(create: (_) => UserController()),
         ChangeNotifierProvider(create: (_) => LoginController()),
+        ChangeNotifierProvider(create: (_) => CartController()),
+        ChangeNotifierProvider(create: (_) => OrderController()),
       ],
       child: MyApp(),
     ),

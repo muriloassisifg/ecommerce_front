@@ -1,5 +1,9 @@
-import 'package:ecommerce_front/screens/product_list_screen.dart';
-import 'package:ecommerce_front/widgets/app_scaffold.dart';
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
+import 'package:ecommerce_front/screens/product_list_screen_adm.dart';
+import 'package:ecommerce_front/screens/product_list_screen_client.dart';
+import 'package:ecommerce_front/utils/app_storage.dart';
+import 'package:ecommerce_front/widgets/app_scaffold_adm.dart';
+import 'package:ecommerce_front/widgets/app_scaffold_client.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/login_controller.dart';
@@ -108,15 +112,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                   content:
                                       Text("Login realizado com sucesso!")),
                             );
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AppScaffold(
-                                  bodyContent: ProductListScreen(),
+
+                            if (AppStorage().getRoleId() == 1) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AppScaffoldAdm(
+                                    bodyContent: ProductListScreenAdm(),
+                                  ),
                                 ),
-                              ),
-                            );
-                            // Navegue para outra tela (exemplo: HomeScreen)
+                              );
+                            } else {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AppScaffoldClient(
+                                    bodyContent: ProductListScreenClient(),
+                                  ),
+                                ),
+                              );
+                            }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text("Credenciais inválidas!")),

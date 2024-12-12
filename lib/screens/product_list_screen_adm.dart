@@ -5,7 +5,7 @@ import '../controllers/product_controller.dart'; // Importa o controlador de pro
 import '../widgets/product_card.dart'; // Importa o widget ProductCard
 import 'add_product_popup.dart'; // Importa a tela de pop-up para adicionar novos produtos
 
-class ProductListScreen extends StatelessWidget {
+class ProductListScreenAdm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<ProductController>(context, listen: false);
