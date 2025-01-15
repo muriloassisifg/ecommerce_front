@@ -9,6 +9,10 @@ class ProductService {
     return await _repository.fetchProducts();
   }
 
+  Future<List<Product>> getProductsBySubcategory(int? subcategory) async {
+    return await _repository.fetchProductsBySubcategory(subcategory);
+  }
+
   Future<Product> addProduct(Product product) async {
     return await _repository.createProduct(product);
   }

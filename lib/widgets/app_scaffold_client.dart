@@ -1,4 +1,6 @@
 // Importa as telas necessárias para navegação no aplicativo
+import 'package:ecommerce_front/controllers/subcategory_controller.dart';
+import 'package:ecommerce_front/models/subcategory.dart';
 import 'package:ecommerce_front/screens/cart_screen.dart';
 import 'package:ecommerce_front/screens/category_list_screen.dart';
 import 'package:ecommerce_front/screens/login_screen.dart';
@@ -85,64 +87,47 @@ class AppScaffoldClient extends StatelessWidget {
       ),
       // Configuração do Drawer, que é um menu lateral
       drawer: Drawer(
-        // Define a lista de itens que aparecerão no drawer
-        child: ListView(
-          padding: EdgeInsets.zero, // Remove o padding padrão
-          children: [
-            // Cabeçalho do drawer
-            DrawerHeader(
-              child: Text(
-                'Menu', // Título do drawer
-                style: TextStyle(
-                    color: Colors.white, fontSize: 24), // Estilo do texto
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.blue), // Cor de fundo do cabeçalho do drawer
-            ),
-            // Item de lista para navegação até a tela de produtos
-            ListTile(
-              title: Text('Informática'), // Título do item "Produtos"
-              onTap: () {
-                // // Navega para a tela de lista de produtos ao selecionar o item
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => AppScaffoldClient(
-                //         bodyContent: ProductListScreenClient()),
-                //   ),
-                // );
-              },
-            ),
-            // Item de lista para navegação até a tela de categorias
-            ListTile(
-              title: Text('Eletrônicos'), // Título do item "Categorias"
-              onTap: () {
-                // Navega para a tela de lista de categorias ao selecionar o item
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         AppScaffoldClient(bodyContent: CategoryListScreen()),
-                //   ),
-                // );
-              },
-            ),
-            ListTile(
-              title: Text('Alimentação'), // Título do item "Categorias"
-              onTap: () {
-                // Navega para a tela de lista de categorias ao selecionar o item
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         AppScaffoldClient(bodyContent: SubCategoryListScreen()),
-                //   ),
-                // );
-              },
-            ),
-
-            // Outros itens do menu podem ser adicionados aqui
-          ],
+        child: FutureBuilder<List<SubCategory>>(
+          future: SubCategoryController().fetchSubCategories(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Erro ao carregar subcategorias'));
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return Center(child: Text('Nenhuma subcategoria encontrada'));
+            } else {
+              return ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  DrawerHeader(
+                    child: Text(
+                      'Menu',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
+                    decoration: BoxDecoration(color: Colors.blue),
+                  ),
+                  ...snapshot.data!.map((subcategory) {
+                    return ListTile(
+                      title: Text(subcategory.name),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AppScaffoldClient(
+                              bodyContent: ProductListScreenClient(
+                                subcategoryId: subcategory.id,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                ],
+              );
+            }
+          },
         ),
       ),
       // Define o conteúdo principal da tela
