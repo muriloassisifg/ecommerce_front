@@ -1,4 +1,5 @@
 // screens/product_list_screen.dart
+import 'package:ecommerce_front/controllers/subcategory_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/product_controller.dart'; // Importa o controlador de produtos
@@ -11,6 +12,9 @@ class ProductListScreenAdm extends StatelessWidget {
     final controller = Provider.of<ProductController>(context, listen: false);
     controller
         .loadProducts(); // Carrega a lista de produtos ao construir a tela
+
+    Provider.of<SubCategoryController>(context, listen: false)
+        .loadSubCategories();
 
     return Stack(
       children: [

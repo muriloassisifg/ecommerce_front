@@ -1,3 +1,4 @@
+import 'package:ecommerce_front/controllers/category_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/subcategory_controller.dart'; // Importa o controlador de subcategorias
@@ -12,6 +13,8 @@ class SubCategoryListScreen extends StatelessWidget {
         Provider.of<SubCategoryController>(context, listen: false);
     // Carrega a lista de categorias ao construir a tela
     controller.loadSubCategories();
+
+    Provider.of<CategoryController>(context, listen: false).loadCategories();
 
     return Stack(
       children: [
