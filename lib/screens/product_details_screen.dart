@@ -1,6 +1,7 @@
 import 'package:ecommerce_front/controllers/cart_controller.dart';
 import 'package:ecommerce_front/utils/app_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easy_faq/flutter_easy_faq.dart';
 import 'package:provider/provider.dart';
 import '../models/product.dart';
 
@@ -40,7 +41,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         child: Image.network(
                           "assets/images/user_avatar.webp",
                           width: double.infinity,
-                          height: 400, // Altura aumentada para mais retangular
+                          height: 400,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -112,6 +113,35 @@ class ProductDetailsScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                            ),
+                            SizedBox(height: 24),
+                            // Seção de Perguntas e Respostas
+                            Text(
+                              "Perguntas Frequentes",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            Column(
+                              children: [
+                                EasyFaq(
+                                  question: "Qual é o prazo de entrega?",
+                                  answer:
+                                      "O prazo de entrega pode variar entre 3 a 7 dias úteis, dependendo da sua localização.",
+                                ),
+                                EasyFaq(
+                                  question: "Posso devolver o produto?",
+                                  answer:
+                                      "Sim, aceitamos devoluções em até 7 dias após o recebimento, conforme o Código de Defesa do Consumidor.",
+                                ),
+                                EasyFaq(
+                                  question: "O produto tem garantia?",
+                                  answer:
+                                      "Sim, este produto possui uma garantia de 12 meses contra defeitos de fabricação.",
+                                ),
+                              ],
                             ),
                           ],
                         ),
